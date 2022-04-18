@@ -3,7 +3,7 @@
 # Node contains everything necessary for a creation of a new node
 class Node
   include Comparable
-  attr_accessor :data
+  attr_accessor :data, :left, :right
 
   def initialize(data, left = nil, right = nil)
     @data = data
