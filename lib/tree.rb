@@ -6,18 +6,18 @@ require_relative 'node'
 class Tree
   def initialize
     @root = nil
-    @treated_data = false
   end
 
   def build_tree(data)
     treated_data = data.sort.uniq
-    mid = treated_data.length / 2
-    node = Node.new(treated_data[mid])
     return nil if treated_data.empty?
 
+    mid = treated_data.length / 2
+    node = Node.new(treated_data[mid])
     node.left = build_tree(treated_data[0, mid])
     node.right = build_tree(treated_data[mid + 1, treated_data.length])
     @root = node
+    @root
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
