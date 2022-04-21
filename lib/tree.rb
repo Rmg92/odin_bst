@@ -21,8 +21,8 @@ class Tree
   end
 
   def insert(value, root = @root)
-    return @root = Node.new(value)if root.nil?
-      
+    return @root = Node.new(value) if root.nil?
+
     if value < root.data
       return root.left = Node.new(value) if root.left.nil?
 
@@ -41,6 +41,8 @@ class Tree
 
     if root.data == value && root.leaf_node?
       delete_leaf_node(root, predecessor)
+    elsif root.data == value && root.one_child?
+      delete_one_child_node(root, predecessor)
     else
       delete(value, root.left, root)
       delete(value, root.right, root)
@@ -52,6 +54,22 @@ class Tree
       predecessor.left = nil
     elsif predecessor.right == node
       predecessor.right = nil
+    end
+  end
+
+  def delete_one_child_node(node, predecessor)
+    if predecessor.left == node
+      predecessor.left = if node.left.nil?
+                           node.right
+                         else
+                           node.left
+                         end
+    elsif predecessor.right == node
+      predecessor.right = if node.left.nil?
+                           node.right
+                         else
+                           node.left
+                         end
     end
   end
 
