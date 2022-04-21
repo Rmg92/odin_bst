@@ -18,4 +18,8 @@ class Node
   def leaf_node?
     true if @left.nil? && @right.nil?
   end
+
+  def one_child?
+    true if (@left.nil? && !@right.nil?) || (!@left.nil? && @right.nil?)
+  end
 end
