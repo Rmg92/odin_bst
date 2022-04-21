@@ -13,7 +13,7 @@ tree = Tree.new
 # tree.pretty_print
 # puts ''
 
-tree.build_tree([1, 2, 3, 4])
+tree.build_tree([1, 2, 3, 4, 5, 6])
 puts ''
 tree.pretty_print
 puts ''
@@ -23,7 +23,12 @@ puts ''
 tree.pretty_print
 puts ''
 
-tree.delete(4)
+tree.delete(2)
+puts ''
+tree.pretty_print
+puts ''
+
+tree.delete(6)
 puts ''
 tree.pretty_print
 puts ''
