@@ -22,4 +22,8 @@ class Node
   def one_child?
     true if (@left.nil? && !@right.nil?) || (!@left.nil? && @right.nil?)
   end
+
+  def two_children?
+    true if !@left.nil? && !@right.nil?
+  end
 end

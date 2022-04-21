@@ -44,13 +44,18 @@ class Tree
     elsif value > root.data
       root.right = delete(value, root.right)
     else
-      if root.leaf_node?
-        root = nil
-      elsif root.one_child?
-        root = delete_one_child_node(root)
-      end
+      root = delete_node(root)
     end
     root
+  end
+
+  def delete_node(node)
+    if node.leaf_node?
+      node = nil
+    elsif node.one_child?
+      node = delete_one_child_node(node)
+    end
+    node
   end
 
   def delete_one_child_node(node)
