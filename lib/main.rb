@@ -23,7 +23,7 @@ puts ''
 tree.pretty_print
 puts ''
 
-tree.delete(3)
+tree.delete(4)
 puts ''
 tree.pretty_print
 puts ''

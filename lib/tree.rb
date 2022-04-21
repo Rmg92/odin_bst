@@ -39,15 +39,19 @@ class Tree
   def delete(value, root = @root, predecessor = nil)
     return if root.nil?
 
-    if root.data == value && root.left.nil? && root.right.nil?
-      if predecessor.left == root
-        predecessor.left = nil
-      elsif predecessor.right == root
-        predecessor.right = nil
-      end
+    if root.data == value && root.leaf_node?
+      delete_leaf_node(root, predecessor)
     else
       delete(value, root.left, root)
       delete(value, root.right, root)
+    end
+  end
+
+  def delete_leaf_node(node, predecessor)
+    if predecessor.left == node
+      predecessor.left = nil
+    elsif predecessor.right == node
+      predecessor.right = nil
     end
   end
 
