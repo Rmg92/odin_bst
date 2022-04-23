@@ -54,6 +54,9 @@ class Tree
       node = nil
     elsif node.one_child?
       node = delete_one_child_node(node)
+    elsif node.two_children?
+      node.data = find_min(node.right).data
+      delete(node.data, node.right)
     end
     node
   end
@@ -64,6 +67,12 @@ class Tree
     else
       node.left
     end
+  end
+
+  def find_min(node)
+    return node if node.left.nil?
+
+    find_min(node.left)
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
