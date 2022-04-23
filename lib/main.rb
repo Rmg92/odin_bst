@@ -18,17 +18,20 @@ puts ''
 tree.pretty_print
 puts ''
 
-tree.delete(1)
+puts 'Delete 4'
+tree.delete(4)
 puts ''
 tree.pretty_print
 puts ''
 
+puts 'Delete 2'
 tree.delete(2)
 puts ''
 tree.pretty_print
 puts ''
 
-tree.delete(4)
+puts 'Delete 1'
+tree.delete(1)
 puts ''
 tree.pretty_print
 puts ''
