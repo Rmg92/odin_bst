@@ -18,7 +18,10 @@ puts ''
 random_number = rand(1..100)
 puts "Delete #{random_number}"
 tree.delete(random_number)
-
 puts ''
 tree.pretty_print
 puts ''
+
+random_number = rand(1..100)
+puts "Find #{random_number}"
+p tree.find(random_number)
