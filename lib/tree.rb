@@ -56,7 +56,7 @@ class Tree
       node = delete_one_child_node(node)
     elsif node.two_children?
       node.data = find_min(node.right).data
-      delete(node.data, node.right)
+      node.right = delete(node.data, node.right)
     end
     node
   end
