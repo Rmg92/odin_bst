@@ -23,5 +23,12 @@ tree.pretty_print
 puts ''
 
 random_number = rand(1..100)
+puts ''
 puts "Find #{random_number}"
 p tree.find(random_number)
+puts ''
+
+puts ''
+puts '#level_order'
+p tree.level_order
+puts ''
