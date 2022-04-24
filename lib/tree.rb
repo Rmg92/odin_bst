@@ -62,6 +62,24 @@ class Tree
     root
   end
 
+  def level_order(queue = [@root])
+    return [] if queue.empty?
+
+    queue << queue[0].left unless queue[0].left.nil?
+    queue << queue[0].right unless queue[0].right.nil?
+    node = [queue[0]]
+    node += level_order(queue[1..-1])
+
+    if queue[0] == @root
+      level_order_data = []
+      node.each { |element| level_order_data << element.data }
+      level_order_data
+    else
+      node
+    end
+    
+  end
+
   def delete_node(node)
     if node.leaf_node?
       node = nil
