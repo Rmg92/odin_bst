@@ -20,7 +20,7 @@ class Tree
     @root
   end
 
-  def insert(value, root = @root)
+  def insert(value, root = @root) # rubocop:disable Metrics/AbcSize
     return @root = Node.new(value) if root.nil?
 
     if value < root.data
@@ -62,22 +62,11 @@ class Tree
     root
   end
 
-  def level_order(queue = [@root])
-    return [] if queue.empty?
-
-    queue << queue[0].left unless queue[0].left.nil?
-    queue << queue[0].right unless queue[0].right.nil?
-    node = [queue[0]]
-    node += level_order(queue[1..-1])
-
-    if queue[0] == @root
-      level_order_data = []
-      node.each { |element| level_order_data << element.data }
-      level_order_data
-    else
-      node
-    end
-    
+  def level_order
+    nodes = level_order_tree
+    level_order_data = []
+    nodes.each { |element| level_order_data << element.data }
+    level_order_data
   end
 
   def delete_node(node)
@@ -106,7 +95,15 @@ class Tree
     find_min(node.left)
   end
 
-  def pretty_print(node = @root, prefix = '', is_left = true)
+  def level_order_tree(queue = [@root]) # rubocop:disable Metrics/AbcSize
+    return [] if queue.empty?
+
+    queue << queue[0].left unless queue[0].left.nil?
+    queue << queue[0].right unless queue[0].right.nil?
+    [queue[0]] + level_order_tree(queue[1..-1])
+  end
+
+  def pretty_print(node = @root, prefix = '', is_left = true) # rubocop:disable Style/OptionalBooleanParameter
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
     pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
