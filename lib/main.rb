@@ -29,6 +29,13 @@ p tree.find(random_number)
 puts ''
 
 puts ''
-puts '#level_order'
+puts '#level_order without block'
 p tree.level_order
+puts ''
+
+puts ''
+puts '#level_order with block'
+tree.level_order do |node|
+  puts "#{node} - #{node.data}"
+end
 puts ''
