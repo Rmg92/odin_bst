@@ -62,11 +62,15 @@ class Tree
     root
   end
 
-  def level_order
+  def level_order(&block)
     nodes = level_order_tree
-    level_order_data = []
-    nodes.each { |element| level_order_data << element.data }
-    level_order_data
+    if block_given?
+      nodes.each(&block)
+    else
+      level_order_data = []
+      nodes.each { |element| level_order_data << element.data }
+      level_order_data
+    end
   end
 
   def delete_node(node)
