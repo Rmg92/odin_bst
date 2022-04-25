@@ -39,3 +39,15 @@ tree.level_order do |node|
   puts "#{node} - #{node.data}"
 end
 puts ''
+
+puts ''
+puts '#inorder without block'
+p tree.inorder
+puts ''
+
+puts ''
+puts '#level_order with block'
+tree.inorder do |node|
+  puts "#{node} - #{node.data}"
+end
+puts ''
