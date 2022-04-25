@@ -73,6 +73,17 @@ class Tree
     end
   end
 
+  def inorder(&block)
+    nodes = inorder_tree
+    if block_given?
+      nodes.each(&block)
+    else
+      level_order_data = []
+      nodes.each { |element| level_order_data << element.data }
+      level_order_data
+    end
+  end
+
   def delete_node(node)
     if node.leaf_node?
       node = nil
@@ -105,6 +116,13 @@ class Tree
     queue << queue[0].left unless queue[0].left.nil?
     queue << queue[0].right unless queue[0].right.nil?
     [queue[0]] + level_order_tree(queue[1..-1])
+  end
+
+  def inorder_tree(root = @root)
+    return [] if root.nil?
+
+    node = inorder_tree(root.left) + [root]
+    node + inorder_tree(root.right)
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true) # rubocop:disable Style/OptionalBooleanParameter
