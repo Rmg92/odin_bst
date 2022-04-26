@@ -3,7 +3,7 @@
 require_relative 'node'
 
 # Builds a binary search tree
-class Tree
+class Tree # rubocop:disable Metrics/ClassLength
   def initialize
     @root = nil
   end
@@ -78,9 +78,20 @@ class Tree
     if block_given?
       nodes.each(&block)
     else
-      level_order_data = []
-      nodes.each { |element| level_order_data << element.data }
-      level_order_data
+      inorder_array = []
+      nodes.each { |element| inorder_array << element.data }
+      inorder_array
+    end
+  end
+
+  def preorder(&block)
+    nodes = preorder_tree
+    if block_given?
+      nodes.each(&block)
+    else
+      preorder_array = []
+      nodes.each { |element| preorder_array << element.data }
+      preorder_array
     end
   end
 
@@ -121,8 +132,13 @@ class Tree
   def inorder_tree(root = @root)
     return [] if root.nil?
 
-    node = inorder_tree(root.left) + [root]
-    node + inorder_tree(root.right)
+    inorder_tree(root.left) + [root] + inorder_tree(root.right)
+  end
+
+  def preorder_tree(root = @root)
+    return [] if root.nil?
+
+    [root] + preorder_tree(root.left) + preorder_tree(root.right)
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true) # rubocop:disable Style/OptionalBooleanParameter
