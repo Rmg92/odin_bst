@@ -53,13 +53,25 @@ end
 puts ''
 
 puts ''
-puts '#inorder without block'
+puts '#preorder without block'
 p tree.preorder
 puts ''
 
 puts ''
 puts '#preorder with block'
 tree.preorder do |node|
+  puts "#{node} - #{node.data}"
+end
+puts ''
+
+puts ''
+puts '#postorder without block'
+p tree.postorder
+puts ''
+
+puts ''
+puts '#postorder with block'
+tree.postorder do |node|
   puts "#{node} - #{node.data}"
 end
 puts ''
