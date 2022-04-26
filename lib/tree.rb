@@ -95,6 +95,17 @@ class Tree # rubocop:disable Metrics/ClassLength
     end
   end
 
+  def postorder(&block)
+    nodes = postorder_tree
+    if block_given?
+      nodes.each(&block)
+    else
+      postorder_array = []
+      nodes.each { |element| postorder_array << element.data }
+      postorder_array
+    end
+  end
+
   def delete_node(node)
     if node.leaf_node?
       node = nil
@@ -139,6 +150,12 @@ class Tree # rubocop:disable Metrics/ClassLength
     return [] if root.nil?
 
     [root] + preorder_tree(root.left) + preorder_tree(root.right)
+  end
+
+  def postorder_tree(root = @root)
+    return [] if root.nil?
+
+    postorder_tree(root.left) + postorder_tree(root.right) + [root]
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true) # rubocop:disable Style/OptionalBooleanParameter
