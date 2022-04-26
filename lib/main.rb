@@ -46,8 +46,20 @@ p tree.inorder
 puts ''
 
 puts ''
-puts '#level_order with block'
+puts '#inorder with block'
 tree.inorder do |node|
+  puts "#{node} - #{node.data}"
+end
+puts ''
+
+puts ''
+puts '#inorder without block'
+p tree.preorder
+puts ''
+
+puts ''
+puts '#preorder with block'
+tree.preorder do |node|
   puts "#{node} - #{node.data}"
 end
 puts ''
