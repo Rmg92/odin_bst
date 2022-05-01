@@ -81,3 +81,9 @@ puts "Height of #{random_number}"
 tree.pretty_print
 puts tree.height(tree.find(random_number))
 puts ''
+
+puts ''
+puts "Depth of #{random_number}"
+tree.pretty_print
+puts tree.depth(tree.find(random_number))
+puts ''
