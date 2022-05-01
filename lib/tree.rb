@@ -166,6 +166,18 @@ class Tree # rubocop:disable Metrics/ClassLength
     end
   end
 
+  def depth(node, root = @root)
+    return 'Node not found!' if node.nil?
+
+    if node == root
+      1
+    elsif node < root
+      1 + depth(node, root.left)
+    elsif node > root
+      1 + depth(node, root.right)
+    end
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true) # rubocop:disable Style/OptionalBooleanParameter
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
