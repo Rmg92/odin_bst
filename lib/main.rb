@@ -75,3 +75,9 @@ tree.postorder do |node|
   puts "#{node} - #{node.data}"
 end
 puts ''
+
+puts ''
+puts "Height of #{random_number}"
+tree.pretty_print
+puts tree.height(tree.find(random_number))
+puts ''
