@@ -92,3 +92,9 @@ puts ''
 puts 'Balanced?'
 puts tree.balanced?
 puts ''
+
+puts ''
+puts 'Rebalance'
+tree.rebalance
+tree.pretty_print
+puts ''
