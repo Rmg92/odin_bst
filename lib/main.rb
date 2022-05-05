@@ -87,3 +87,8 @@ puts "Depth of #{random_number}"
 tree.pretty_print
 puts tree.depth(tree.find(random_number))
 puts ''
+
+puts ''
+puts 'Balanced?'
+puts tree.balanced?
+puts ''
