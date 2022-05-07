@@ -28,7 +28,7 @@ tree.pretty_print
 puts ' '
 puts "Tree is balanced? #{tree.balanced?}"
 puts ' '
-puts "Rebalancing tree"
+puts 'Rebalancing tree'
 tree.rebalance
 puts ' '
 puts "Tree is balanced? #{tree.balanced?}"

@@ -3,7 +3,7 @@
 require_relative 'node'
 
 # Builds a binary search tree
-class Tree # rubocop:disable Metrics/ClassLength
+class Tree
   def initialize
     @root = nil
   end
@@ -20,7 +20,7 @@ class Tree # rubocop:disable Metrics/ClassLength
     @root
   end
 
-  def insert(value, root = @root) # rubocop:disable Metrics/AbcSize
+  def insert(value, root = @root)
     return @root = Node.new(value) if root.nil?
 
     if value < root.data
@@ -132,7 +132,7 @@ class Tree # rubocop:disable Metrics/ClassLength
     find_min(node.left)
   end
 
-  def level_order_tree(queue = [@root]) # rubocop:disable Metrics/AbcSize
+  def level_order_tree(queue = [@root])
     return [] if queue.empty?
 
     queue << queue[0].left unless queue[0].left.nil?
